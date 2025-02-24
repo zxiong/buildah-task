@@ -24,9 +24,9 @@ spec:
   - name: revision
     value: '{{revision}}'
   - name: output-image
-    value: quay.io/redhat-user-workloads-stage/zxiong-tenant/buildah-task-test1:on-pr-{{revision}}
+    value: quay.io/redhat-user-workloads-stage/zxiong-tenant/buildah-task:on-pr-{{revision}}
   - name: image-expires-after
-    value: 5d
+    value: 30d
   - name: build-platforms
     value:
     - linux/amd64
