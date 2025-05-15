@@ -30,6 +30,8 @@ spec:
   - name: build-platforms
     value:
     - linux/x86_64
+    - linux/arm64
+    - linux/ppc64le
   - name: dockerfile
     value: Dockerfile
   pipelineSpec:
@@ -416,10 +418,15 @@ spec:
         - name: name
           value: clamav-scan
         - name: bundle
-          value: quay.io/konflux-ci/tekton-catalog/task-clamav-scan:0.2@sha256:24182598bf5161c4007988a7236e240f361c77a0a9b6973a6712dbae50d296bc
+          value: quay.io/zxiong/clamd-scan:0.2.5
         - name: kind
           value: task
         resolver: bundles
+      matrix:
+        params:
+        - name: image-arch
+          value:
+          - $(params.build-platforms)  
       when:
       - input: $(params.skip-checks)
         operator: in
