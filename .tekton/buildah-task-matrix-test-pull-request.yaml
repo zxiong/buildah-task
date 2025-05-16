@@ -422,7 +422,12 @@ spec:
           value: quay.io/zxiong/clamd-scan:0.2.5
         - name: kind
           value: task
-        resolver: bundles 
+        resolver: bundles
+      matrix:
+        params:
+        - name: image-arch
+          value:
+          - $(params.build-platforms)  
       when:
       - input: $(params.skip-checks)
         operator: in
